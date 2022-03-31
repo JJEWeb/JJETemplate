@@ -12,7 +12,7 @@ The format of the app itself is a simple To Do List, as this has full CRUD funct
 
 ### Backend
 - We are using [Sanity.io](https://www.sanity.io), as this is how clients will be interfacing with their apps
-- This implementation uses dotenv modules to keep Contentful API keys secure. This is done through src/utils/dotenv.js, then imported into the app
+- API keys do not need securing, as they are used only to render the website.
 
 
 ## Steps in the Process
