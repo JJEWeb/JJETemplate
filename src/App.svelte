@@ -1,48 +1,35 @@
 <script>
-	import {onMount} from 'svelte'
-	export let name;
+	import Nav from './components/Nav.svelte'
+	import {Router, Route} from 'svelte-navigator'
 
-	let contentfulData = []
+	let contactData = []
 
-	const url = 'http://cdn.contentful.com/spaces/5o940t3dtq1j/environments/master/entries?access_token=ZKLOr10hADHsIsN-zlz23C12WuuFU3Boi0tkpud0n4A&content_type=contactInfo'
 
-	const getData = async () =>{
-		const response = await fetch(url)
+	const url = 'http://cdn.contentful.com/spaces/5o940t3dtq1j/environments/master/entries?access_token=ZKLOr10hADHsIsN-zlz23C12WuuFU3Boi0tkpud0n4A&content_type='
+
+	const getContact = async () =>{
+		const response = await fetch(url + 'contactInfo')
 		const data = await response.json()
-		contentfulData = data.items
-		console.log(contentfulData)
+		contactData = data.items
 	}
-
-	getData()
 	
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	{#each contentfulData as data}
-		<h1>{data.fields.email}</h1>
-	{/each}
-</main>
+<Router>
+	<Nav/>
+	<main>
+		<Route path='/'>
+			<h1>Home Route</h1>
+		</Route>
+		<Route path='about'>
+			<h1>About Route</h1>
+		</Route>
+		<Route path='menu'>
+			<h1>Menu Route</h1>
+		</Route>
+		<Route path='contact'>
+			<h1>Contact Us</h1>
+		</Route>
+	</main>
 
-<style>
-	/* main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	} */
-</style>
+</Router>

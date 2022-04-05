@@ -11,7 +11,7 @@ The format of the app itself is a simple To Do List, as this has full CRUD funct
 - CSS is [Skeleton](http://getskeleton.com), so as to have some style while keeping it minimalistic
 
 ### Backend
-- We are using [Sanity.io](https://www.sanity.io), as this is how clients will be interfacing with their apps
+- We are using [Contentful](https://www.contentful.com), as this is how clients will be interfacing with their apps
 - API keys do not need securing, as they are used only to render the website.
 
 
