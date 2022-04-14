@@ -33,14 +33,29 @@
 
 
 
-    @media only screen and (min-width: 600px){
+    @media only screen and (min-width: 601px){
         .container{
+            display: none;
+        }
+
+        .menu-closed, .menu-open{
             display: none;
         }
     }
 
     @media only screen and (max-width: 600px){
     .categories{
+        display: none;
+    }
+
+    .menu-open{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+    }
+
+    .menu-closed{
         display: none;
     }
 
@@ -79,15 +94,21 @@
 
 <nav>
     <h1 class='logo'>Logo</h1>
+    <div class="container {sandwich ? '' : 'change'}" on:click={toggleSandwich}>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
     <div class="categories">
         <Link to='/'><h5>Home</h5></Link>
         <Link to='about'><h5>About Us</h5></Link>
         <Link to='menu'><h5>Menu</h5></Link>
         <Link to='contact'><h5>Contact Us</h5></Link>
     </div>
-    <div class="container {sandwich ? '' : 'change'}" on:click={toggleSandwich}>
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
 </nav>
+<div class="{sandwich ? 'menu-closed' : 'menu-open'}">
+    <Link to='/'><h5>Home</h5></Link>
+    <Link to='about'><h5>About Us</h5></Link>
+    <Link to='menu'><h5>Menu</h5></Link>
+    <Link to='contact'><h5>Contact Us</h5></Link>
+</div>
